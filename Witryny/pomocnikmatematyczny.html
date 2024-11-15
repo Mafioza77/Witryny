@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Działania matematyczne</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="b1">
+        <img src="mata.jpg" alt="Matematyka" width="180" height="100">
+    </div>
+    <div class="b2">
+        <h1>Pomocnik matematyczny</h1>
+    </div>
+    <div class="b3">
+        <a href="calculator.html">
+            <h4>Działania</h4>
+        </a>
+    </div>
+    <div class="b4">
+        <a href="mnozenie.html">
+            <h4><a href="tabliczka.html">Tabliczka mnożenia</a></h4>
+        </a>
+    </div>
+</header>
+<main>
+    
+    <div class="lewy">
+        <h3>Proste działania</h3>
+        <label for="liczbaA">Liczba A: <input type="number" id="liczbaA"></label><br>
+        <label for="liczbaB">Liczba B: <input type="number" id="liczbaB"></label><br>
+        <button onclick="dodawanie()">+</button>
+        <button onclick="odejmowanie()">-</button>
+        <button onclick="mnozenie()">*</button>
+        <button onclick="dzielenie()">/</button>
+        <button onclick="potegowanie()">^</button>
+    </div>
+    
+    <div class="prawy">
+        <ul>
+            <li>dodawanie</li>
+            <li>odejmowanie</li>
+            <li>mnożenie</li>
+            <li>dzielenie</li>
+            <li>potęgowanie</li>
+        </ul>
+        <br><span id="wynik"></span>
+    </div>
+</main>
+
+<footer>
+    <p></p>
+    <p>Autor: Bartosz Piecha 3cT</p>
+</footer>
+
+<script>
+    function dodawanie() {
+        var liczbaA = parseInt(document.getElementById('liczbaA').value);
+        var liczbaB = parseInt(document.getElementById('liczbaB').value);
+        var wynik = liczbaA + liczbaB;
+        document.getElementById("wynik").innerText = `Wynik dodawania to ${wynik}`;
+    }
+
+    function odejmowanie() {
+        var liczbaA = parseInt(document.getElementById('liczbaA').value);
+        var liczbaB = parseInt(document.getElementById('liczbaB').value);
+        var wynik = liczbaA - liczbaB;
+        document.getElementById("wynik").innerText = `Wynik odejmowania to ${wynik}`;
+    }
+
+    function mnozenie() {
+        var liczbaA = parseInt(document.getElementById('liczbaA').value);
+        var liczbaB = parseInt(document.getElementById('liczbaB').value);
+        var wynik = liczbaA * liczbaB;
+        document.getElementById("wynik").innerText = `Wynik mnożenia to ${wynik}`;
+    }
+
+    function dzielenie() {
+        var liczbaA = parseInt(document.getElementById('liczbaA').value);
+        var liczbaB = parseInt(document.getElementById('liczbaB').value);
+        if (liczbaB !== 0) {
+            var wynik = liczbaA / liczbaB;
+            document.getElementById("wynik").innerText = `Wynik dzielenia to ${wynik}`;
+        } else {
+            document.getElementById("wynik").innerText = "Nie można dzielić przez zero!";
+        }
+    }
+
+    function potegowanie() {
+        var liczbaA = parseInt(document.getElementById('liczbaA').value);
+        var liczbaB = parseInt(document.getElementById('liczbaB').value);
+        var wynik = Math.pow(liczbaA, liczbaB);
+        document.getElementById("wynik").innerText = `Wynik potęgowania to ${wynik}`;
+    }
+</script>
+
+</body>
+</html>

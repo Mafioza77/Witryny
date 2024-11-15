@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8"> <!-- Ustawienie kodowania znaków na UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Umożliwienie prawidłowego skalowania strony na urządzeniach mobilnych -->
+    <title>Kalkulator pola</title> <!-- Tytuł strony, który pojawia się w zakładce przeglądarki -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Ustawienie czcionki */
+            background-color: #f4f4f9; /* Kolor tła */
+            display: flex; /* Użycie flexboxa do centrowania */
+            justify-content: center; /* Wyśrodkowanie kontenera w poziomie */
+            align-items: center; /* Wyśrodkowanie kontenera w pionie */
+            height: 100vh; /* Wysokość na 100% widoku okna */
+            margin: 0; /* Usunięcie marginesów */
+            background-color: rgb(87, 138, 233);
+        }
+        img{
+            float:center;
+        }
+
+        .container {
+            background-color: rgb(255, 255, 255); /* Tło kontenera */
+            padding: 20px; /* Odstęp wewnętrzny */
+            border-radius: 10px; /* Zaokrąglone rogi */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Cień pod kontenerem */
+            max-width: 400px; /* Maksymalna szerokość */
+            width: 100%; /* Szerokość kontenera na 100% */
+            text-align: center; /* Wyśrodkowanie zawartości tekstowej */
+        }
+
+        h2 {
+            color: #000000; /* Kolor tekstu nagłówka */
+            margin-bottom: 20px; /* Odstęp poniżej nagłówka */
+        }
+
+        input {
+            width: 95%;
+            padding: 10px; /* Wewnętrzny margines */
+            margin: 10px 0; /* Odstępy między inputami */
+            border: 1px solid #ccc; /* Obramowanie */
+            border-radius: 5px; /* Zaokrąglone rogi */
+            font-size: 16px; /* Rozmiar czcionki */
+        }
+
+        button {
+            width: 100%; /* Szerokość przycisku */
+            padding: 10px; /* Wewnętrzny margines */
+            background-color: #2950d1; /* Kolor tła przycisku */
+            color: white; /* Kolor tekstu */
+            border: none; /* Brak obramowania */
+            border-radius: 5px; /* Zaokrąglone rogi */
+            cursor: pointer; /* Zmiana kursora */
+            font-size: 16px; /* Rozmiar tekstu */
+            margin-top: 10px; /* Margines górny */
+        }
+
+        button:hover {
+            background-color: #218838; /* Kolor tła przy najechaniu */
+        }
+
+        .result {
+            text-align: center; /* Wyśrodkowanie tekstu */
+            margin-top: 20px; /* Odstęp górny */
+            font-size: 18px; /* Rozmiar tekstu */
+            color: #555; /* Kolor tekstu */
+        }
+
+        img {
+            display: block; /* Wyświetlanie obrazu jako blok */
+            margin: 10px auto; /* Wyśrodkowanie obrazów */
+            max-width: 150px; /* Maksymalna szerokość obrazów */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Kalkulator Kafelkarza</h2> <!-- Nagłówek dla pola trójkąta -->
+
+
+    <input type="number" id="a" placeholder="Bok a"> <!-- Pole input dla boku a -->
+    <input type="number" id="b" placeholder="Bok b"> <!-- Pole input dla boku b -->
+    <input type="number" id="c" placeholder="Bok c"> <!-- Pole input dla boku c -->
+    <button onclick="calculateTriangle()">Oblicz pole trójkąta</button> <!-- Przycisk obliczający pole trójkąta -->
+
+    <div class="result">
+        <p id="triangle-result"></p> <!-- Wynik dla pola trójkąta -->
+    </div>
+
+    <img src="tr.png" alt="Obraz trójkąta"> <!-- Obrazek trójkąta -->
+
+    <h2>Pole prostokąta</h2> <!-- Nagłówek dla pola prostokąta -->
+    <input type="number" id="length" placeholder="Długość prostokąta"> <!-- Pole input dla długości prostokąta -->
+    <input type="number" id="width" placeholder="Szerokość prostokąta"> <!-- Pole input dla szerokości prostokąta -->
+    <button onclick="calculateRectangle()">Oblicz pole prostokąta</button> <!-- Przycisk obliczający pole prostokąta -->
+
+    <div class="result">
+        <p id="rectangle-result"></p> <!-- Wynik dla pola prostokąta -->
+    </div>
+
+    <img src="pr.png" alt="Obraz prostokąta"> <!-- Obrazek prostokąta -->
+
+    
+</div>
+
+<script>
+    function calculateTriangle() {
+        const a = +document.getElementById('a').value; // Pobranie wartości boku a
+        const b = +document.getElementById('b').value; // Pobranie wartości boku b
+        const c = +document.getElementById('c').value; // Pobranie wartości boku c
+        const s = (a + b + c) / 2; // Obliczenie połowy obwodu trójkąta
+        const area = Math.sqrt(s * (s - a) * (s - b) * (s - c)); // Obliczenie pola za pomocą wzoru Herona
+        document.getElementById('triangle-result').textContent = isNaN(area) || area <= 0 ? "Błędne dane" : `Pole trójkąta: ${area.toFixed(2)}`; 
+        // Wyświetlenie wyniku lub komunikat o błędzie
+    }
+
+    function calculateRectangle() {
+        const length = +document.getElementById('length').value; // Pobranie wartości długości prostokąta
+        const width = +document.getElementById('width').value; // Pobranie wartości szerokości prostokąta
+        const area = length * width; // Obliczenie pola prostokąta
+        document.getElementById('rectangle-result').textContent = length > 0 && width > 0 ? `Pole prostokąta: ${area.toFixed(2)}` : "Błędne dane"; 
+        // Wyświetlenie wyniku lub komunikat o błędzie
+    }
+</script>
+
+</body>
+</html>
