@@ -1,0 +1,28 @@
+body{
+    background-color: bisque;
+}
+.b1{
+    background-color: rgb(231, 197, 156);
+    text-align: center;
+}
+.lewy {
+    background-color: rgb(231, 197, 156);
+    width: 33%;
+    height: 500px;
+}
+.srodek{
+    width: 34%;
+}
+.prawy {
+    background-color: rgb(231, 197, 156);
+    width: 33%;
+    height: 500px;
+}
+main{
+    clear: both;
+    display: flex;
+    flex-direction: row;
+}
+.trans{
+    text-align: center;
+}
